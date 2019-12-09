@@ -2,6 +2,7 @@ package pavankreddy.blogspot.pvpfirstapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -24,8 +25,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void showToast(View view)
     {
-        Toast.makeText(this, "Hi, PVP IT ", Toast.LENGTH_SHORT)
-                .show();
+        Intent i = new Intent(this,GalleryActivity.class);
+        startActivity(i);
+
     }
 
     public void showCount(View view)
