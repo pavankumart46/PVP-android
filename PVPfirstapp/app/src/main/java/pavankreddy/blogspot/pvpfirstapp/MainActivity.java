@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void showToast(View view)
     {
+        // This is explicit Intent
         Intent i = new Intent(this,GalleryActivity.class);
         startActivity(i);
 
