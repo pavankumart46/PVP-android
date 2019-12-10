@@ -35,4 +35,9 @@ public class MainActivity extends AppCompatActivity {
         // Step-3 Send the request to the system
         startActivity(i);
     }
+
+    public void openMaps(View view)
+    {
+
+    }
 }
