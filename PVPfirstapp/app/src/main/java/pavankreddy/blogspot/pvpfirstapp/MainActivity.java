@@ -21,6 +21,21 @@ public class MainActivity extends AppCompatActivity {
         // Connect the text view on Xml file to textView object
         textView = findViewById(R.id.count_tv);
 
+        if(savedInstanceState!=null){
+            // If it is not null. ie., there is a value to be retrieved
+            count = savedInstanceState.getInt("SAVE");
+            textView.setText(String.valueOf(count));
+        }
+
+    }
+    
+    // Save the instance state
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt("SAVE",count);
+
     }
 
     public void showToast(View view)
@@ -37,4 +52,7 @@ public class MainActivity extends AppCompatActivity {
         textView.setText(String.valueOf(count));
         //textView.setText(""+count);
     }
+
+
 }
+

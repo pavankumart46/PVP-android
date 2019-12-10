@@ -38,6 +38,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void openMaps(View view)
     {
+        // Step - 1: get data from the edit text box
+        EditText et = findViewById(R.id.add_text_box);
+        String pvp = et.getText().toString();
+        //Step -2 : Creata an implicit intent
+        Intent i = new Intent();
+            //Set the action
+        i.setAction(Intent.ACTION_VIEW);
+            //Set the data
+        i.setData(Uri.parse("geo:0,0?q="+pvp));
+        //Step-3: pass the request to the system
+        startActivity(i);
 
     }
 }
