@@ -2,6 +2,7 @@ package pavankreddy.blogspot.recyclerviewexample;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -28,19 +29,19 @@ public class MainActivity extends AppCompatActivity {
         setUpData();
 
         recyclerView = findViewById(R.id.recyclerview);
-
-
+        recyclerView.setAdapter(new RVAdapter());
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void setUpData() {
-        images = new int[]{R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.e, R.drawable.f2,
+        images = new int[]{R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d,R.drawable.e, R.drawable.f2,
         R.drawable.g, R.drawable.h, R.drawable.i, R.drawable.j};
 
         movie_names = new String[]{"Arjun Reddy","Bahubali 2","Chatrapati","Damarukam","Eega","F2","Gangleader","Hello","I","Jalsa"};
 
         actor_names = new String[]{"Vijay","Prabhas","Prabhas","Nagarjuna","Samantha","Venkatesh,varun","Nani","Akhil","Vikram","Pawan Kalyan"};
     }
-    
+
     class RVAdapter extends RecyclerView.Adapter<RVAdapter.RVholder>
     {
         @NonNull
