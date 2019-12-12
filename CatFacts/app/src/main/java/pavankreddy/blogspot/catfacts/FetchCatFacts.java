@@ -5,6 +5,10 @@ import android.os.AsyncTask;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -55,6 +59,26 @@ public class FetchCatFacts extends AsyncTask<String,Void,String>
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        tv.setText(s);
+
+        // parsing Json
+        //Convert the entire string into one json object
+        try
+        {
+            tv.append("\n");
+            JSONObject root = new JSONObject(s);
+            JSONArray all = root.getJSONArray("all");
+            for(int i = 0; i<all.length();i++)
+            {
+                JSONObject fact = all.getJSONObject(i);
+                String text = fact.getString("text");
+                tv.append(""+(i+1)+"."+text+"\n");
+                tv.append("---------------\n");
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
     }
 }
