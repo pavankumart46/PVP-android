@@ -2,6 +2,8 @@ package pavankreddy.blogspot.catfacts;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,10 +25,12 @@ public class FetchCatFacts extends AsyncTask<String,Void,String>
     private static final String link = "https://cat-fact.herokuapp.com/facts";
     private Context context;
     private TextView tv;
+    private ProgressBar progressBar;
 
-    public FetchCatFacts(Context context,TextView tv) {
+    public FetchCatFacts(Context context,TextView tv,ProgressBar progressBar) {
         this.context = context;
         this.tv = tv;
+        this.progressBar = progressBar;
     }
 
     @Override
@@ -59,7 +63,6 @@ public class FetchCatFacts extends AsyncTask<String,Void,String>
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-
         // parsing Json
         //Convert the entire string into one json object
         try
@@ -79,6 +82,8 @@ public class FetchCatFacts extends AsyncTask<String,Void,String>
         {
             e.printStackTrace();
         }
+
+        progressBar.setVisibility(View.GONE);
 
     }
 }
